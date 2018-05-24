@@ -1,3 +1,7 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by CharlesYang on 2018/5/21.
  */
@@ -23,7 +27,7 @@ public class HappensBefore {
         return i;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final HappensBefore happensBefore = new HappensBefore();
 
 
@@ -37,6 +41,13 @@ public class HappensBefore {
                 happensBefore.write(90);
                 happensBefore.setFlag(true);
 //                System.out.println("thread 1 : " + happensBefore.read());
+                try {
+                    System.out.println(Thread.currentThread() + " thread 1 "
+                            + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
         /**
@@ -46,11 +57,25 @@ public class HappensBefore {
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 System.out.println(happensBefore.isFlag());
                 System.out.println(happensBefore.read());
+                try {
+                    System.out.println(Thread.currentThread() + " thread 2 "
+                            + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
         t1.start();
         t2.start();
+        t1.join();
+        System.out.println("one done" + Thread.currentThread() + "  "
+                + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+        t2.join();
+        System.out.println("second done" +Thread.currentThread() + "  "
+                + new SimpleDateFormat("HH:mm:ss").format(new Date()));
     }
 }
