@@ -67,7 +67,12 @@ public class HappensBefore {
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
+                while (happensBefore.isFlag()==false){
 
+                    System.out.println(Thread.currentThread() + " thread 2 "
+                            );
+
+                }
                 System.out.println(happensBefore.isFlag());
                 System.out.println(happensBefore.read());
 //                try {

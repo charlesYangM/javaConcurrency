@@ -13,6 +13,10 @@ public class TwinsLockTest {
     public void test(){
         final Lock lock  = new TwinsLock();
         class Worker extends Thread{
+            public Worker(String s) {
+                super(s);
+            }
+
             public void run(){
                 while(true){
                     lock.lock();
@@ -22,14 +26,14 @@ public class TwinsLockTest {
                         TimeUnit.SECONDS.sleep(1);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }finally {
+                    } finally {
                         lock.unlock();
                     }
                 }
             }
         }
         for (int i = 0; i < 10; i++){
-            Worker w = new Worker();
+            Worker w = new Worker("thread " + i);
             w.setDaemon(true);
             w.start();
         }
