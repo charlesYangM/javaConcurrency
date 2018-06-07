@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by CharlesYang on 2018/5/21.
  */
-public class HappensBefore {
+public class HappensBefore implements Runnable{
 
     private int i = 5;
     private volatile boolean flag ;
@@ -92,5 +92,10 @@ public class HappensBefore {
 //        t2.join();
 //        System.out.println("second done" +Thread.currentThread() + "  "
 //                + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+    }
+
+    @Override
+    public void run() {
+
     }
 }

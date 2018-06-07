@@ -10,20 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public class TestQueue extends TestCase{
 
-
-    public void testBoundedQueue(){
-        BoundedQueue<String> q = new BoundedQueue<String>();
-        q.enqueue("qq");
-        q.enqueue("qq");
-        q.enqueue("qq");
-        q.enqueue("qq");
-        q.enqueue("qq");
-        q.enqueue("qq");
-        while (!q.isEmpty()){
-            System.out.println(q.dequeue());
-        }
-    }
-
     public static void main(String[] args) {
 //        Queue<String> q = new Queue<String>();
         final BoundedQueue<String> q = new BoundedQueue<>();
@@ -59,12 +45,9 @@ public class TestQueue extends TestCase{
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                q.enqueue("qq");
-                q.enqueue("qq");
-                q.enqueue("qq");
-                q.enqueue("qq");
-                q.enqueue("qq");
-                q.enqueue("qq");
+                for (int i = 0; i < 10; i++){
+                    q.enqueue("qq");
+                }
             }
         },"thread 2");
         t2.start();

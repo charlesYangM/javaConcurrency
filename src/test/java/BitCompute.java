@@ -5,6 +5,8 @@ public class BitCompute {
     public static void main(String[] args) {
         int c = 2;
         int bit = c + (1 << 16);
+        int ssize = 1;
+        System.out.println(ssize<<=1);
         System.out.println(bit);
     }
 }
