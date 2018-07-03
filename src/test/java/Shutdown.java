@@ -17,7 +17,7 @@ public class Shutdown {
         countThread.start();
 
         TimeUnit.SECONDS.sleep(1);
-        two.cancel();//此处应该注意到 two 在两个线程里面都被使用到
+        two.cancel();//锟剿达拷应锟斤拷注锟解到 two 锟斤拷锟斤拷锟斤拷锟竭筹拷锟斤拷锟芥都锟斤拷使锟矫碉拷
     }
 
     private static class Runner implements Runnable{

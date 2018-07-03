@@ -23,7 +23,7 @@ public class Profiler {
     public static void main(String[] args) throws InterruptedException {
         Profiler.begin();
         TimeUnit.SECONDS.sleep(2);
-        System.out.println("cost : " + Profiler.end() + " mills ");
+        System.out.println("cost : " + Profiler.end()/1000.0+ " s ");
 //        System.out.println(1 + 5 > 4);
     }
 }
