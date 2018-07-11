@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class SynDiff {
     public static synchronized void printlf(String id){
-
         System.out.println(id);
         for (;;);
     }
